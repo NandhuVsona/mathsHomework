@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    *{
+      margin: 0%;
+      padding: 0%;
+      box-sizing: border-box;
+     
+    }
+    .container{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+      text-align: center;
+      background: linear-gradient(to right bottom,rgb(0, 26, 255),rgb(0, 255, 123));
+    }
+    .boxes{
+      display: grid;
+      grid-template-columns: repeat(3,100px);
+      grid-template-rows: repeat(3,100px);
+      border: 3px solid rgb(255, 255, 255);
+      outline: none;
+      border-radius:3px;
+      box-shadow: 0px 0px 15px #333;
+     
+    }
+    .inputbox{
+      font-size: 50px;
+      font-family: sans-serif;
+      text-align: center;
+      border: 3px solid black;
+      outline: none;
+      font-weight: bold;
+      color: rgb(0, 0, 0);
+      cursor: pointer;
+    }
+    .h1{
+      line-height: 40px;
+      margin-bottom: 20px;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    #error{
+      font-size:30px;
+      font-weight: bold;
+      margin-top: 20px;
+      color: rgb(255, 255, 255);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      
+    }
+    input:invalid{
+      background-color: red;
+    }
+    input:valid{
+      background-color: rgb(206, 232, 12);
+    }
+    button{
+      width: 200px;
+      height: 50px;
+      border-radius: 30px;
+      outline: none;
+      background-color: rgb(224, 3, 228);
+      font-weight: bold;
+      
+    }
+    a{
+      text-decoration: none;
+      font-size: 20px;
+      color: white;
+     
+    }
+    p{
+    line-height: 25px;
+    font-family: cursive;
+    color: #ffffff;
+    margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 class="h1"> 2nd year ECE-B section Maths HW
+    </h1>
+    <p>You have to put numbers from 1 to 9 in a manner so that respective row, column and diagonal add up to 15.</p>
+    <div class="boxes">
+      <input  id="firstbox" pattern="[1-9]" class="ibox inputbox" type="tel" maxlength="1">
+      <input id="secondbox" pattern="[1-9]" class="ibox inputbox" type="tel" maxlength="1">
+      <input id="thirdbox" pattern="[1-9]" class="ibox inputbox" type="tel" maxlength="1">
+      <input id="fourthbox" pattern="[1-9]" class="ibox inputbox" type="tel" maxlength="1">
+      <input id="fifthbox" pattern="[1-9]" class="ibox inputbox" type="tel" maxlength="1">
+      <input id="sixthbox" pattern="[1-9]" class="ibox inputbox" type="tel" maxlength="1">
+      <input id="seventhbox" pattern="[1-9]" class="ibox inputbox" type="tel" maxlength="1">
+      <input id="eightbox" pattern="[1-9]" class="ibox inputbox" type="tel" maxlength="1">
+      <input id="ninthbox" pattern="[1-9]" class="ibox inputbox" type="tel" maxlength="1">
+      
+    </div>
+    <div id="error"></div>
+    <button><a href="">Reset</a></button>
+  </div>
+  <script>
+    let b=[];
+    let firstbox =document.querySelectorAll('.ibox');
+    firstbox.forEach((n)=>{
+      
+      n.addEventListener("input",()=>{
+        
+      if(b.includes(n.value)){
+        document.getElementById('error').innerHTML=`${n.value}`+" is already entered";
+        return false;
+      }else{
+        b.push(n.value)
+        document.getElementById('error').innerHTML="";
+        return true;
+      }
+      });
+      
+      
+    })
+      
+      
+    
+  </script>
+</body>
+</html>
